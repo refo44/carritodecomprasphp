@@ -8,7 +8,7 @@
 </head>
 <body>
 	<header>
-		<h1>Detalles de Producto</h1>
+		<h1>Detalles del Producto</h1>
 		<a href="./carritodecompras.php" title="ver carrito de compras">
 			<img src="./imagenes/carrito.png">
 		</a>
@@ -22,12 +22,12 @@ while ($f = mysql_fetch_array($re)) {
 	?>
 
 
-				<center>
-					<img src="./productos/<?php echo $f['imagen'];?>"><br>
-					<span><?php echo $f['nombre'];?></span><br>
-					<span>Precio: <?php echo $f['precio'];?></span><br>
-					<a href="./carritodecompras.php=?id=<?php echo $f['id'];?>">Añadir al carrito</a>
-				</center>
+						<center>
+							<img src="./productos/<?php echo $f['imagen'];?>"><br>
+							<span><?php echo $f['nombre'];?></span><br>
+							<span>Precio: <?php echo $f['precio'];?></span><br>
+							<a href="./carritodecompras.php?id=<?php echo $f['id'];?>">Añadir al carrito</a>
+						</center>
 
 
 	<?php
