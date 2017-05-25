@@ -1,5 +1,96 @@
 <?php
+
 session_start();
+
+include './conexion.php';
+if(isset($_SESSION["carrito"])){
+
+
+	if (isset($_GET['id'])) {
+
+	$arreglo = $_SESSION["carrito"];
+
+	$encontro = false;
+
+	$numero = 0;
+
+
+	for ($i=0; $i < count($arreglo) ; $i++) { 
+
+
+		if($arreglo[$i]['Id'] == $_GET['id']){
+
+			$encontro = true;
+			$numero = $i;
+
+
+			break;
+		}
+	}
+
+	if ($encontro) {
+		
+		$arreglo[$numero]['Cantidad'] += 1;
+
+		$_SESSION['carrito'] = $arreglo;
+	}else{
+
+
+		if (isset($_GET['id'])) {
+		$nombre = "";
+		$precio = 0;
+		$imagen = "";
+		$re = mysql_query("SELECT * FROM productos WHERE id = " . $_GET['id']);
+		while ( $f = mysql_fetch_array($re)) {
+			$nombre = $f["nombre"];
+			$precio = $f["precio"];
+			$imagen = $f["imagen"];
+		}
+
+		$datosNuevos = array(
+			'Id' => $_GET['id'] , 
+			'Nombre' => $nombre,
+			'Precio' => $precio,
+			'Imagen' => $imagen,
+			'Cantidad' => 1  );
+
+
+
+		array_push($arreglo, $datosNuevos);
+
+		$_SESSION['carrito'] = $arreglo;
+	}
+
+
+	}
+
+
+}
+
+}else{
+	if (isset($_GET['id'])) {
+		$nombre = "";
+		$precio = 0;
+		$imagen = "";
+		$re = mysql_query("SELECT * FROM productos WHERE id = " . $_GET['id']);
+		while ( $f = mysql_fetch_array($re)) {
+			$nombre = $f["nombre"];
+			$precio = $f["precio"];
+			$imagen = $f["imagen"];
+		}
+
+		$arreglo[] = $arrayName = array(
+			'Id' => $_GET['id'] , 
+			'Nombre' => $nombre,
+			'Precio' => $precio,
+			'Imagen' => $imagen,
+			'Cantidad' => 1  );
+
+		$_SESSION['carrito'] = $arreglo;
+	}else{
+
+	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,36 +112,45 @@ session_start();
 
 <?php
 
+$total = 0;
+
 if (isset($_SESSION['carrito'])) {
 
 	$datos = $_SESSION['carrito'];
-	$total = 0;
+	
 
-	for ($i = 0; $i < count($datos); $i++) {
+
+	for ($i = 0; $i < count($datos); $i++	) {
 		?>
-		<div class="producto">
+		<div class="productos">
 		<center>
-
-			<img src="./productos/<?php echo $_datos[i]['Imagen'];?>" alt=""> <br>
-			<span><?php echo $_datos[i]['Nombre'];?></span> <br>
-			<span>Precio: <?php echo $_datos[i]['Precio'];?></span> <br>
-			<span>Cantidad: <input type="text" value="<?php echo $_datos[i]['Cantidad'];?>"> </span> <br>
-			<span>Precio Total: <?php echo $_datos[i]['Precio'] * $_datos[i]['Cantidad'];?></span> <br>
+			<img src="./productos/<?php echo $datos[$i]['Imagen'];?>" alt=""> <br>
+			<span><?php echo $datos[$i]['Nombre'];?></span> <br>
+			<span>Precio: <?php echo $datos[$i]['Precio'];?></span> <br>
+			<span>Cantidad: <input type="text" value="<?php echo $datos[$i]['Cantidad'];?>"> </span> <br>
+			<span>Precio Total: <?php echo $datos[$i]['Precio'] * $datos[$i]['Cantidad'];?></span> <br>
 
 		</center>
 		</div>
 
 
 		<?php
+
+		$total += $datos[$i]['Precio'] * $datos[$i]['Cantidad'];
 	}
 
 } else {
 
-	echo "<h2> El carrito de compras está vacío</h2>";
+	echo "<h2> No has añadido productos</h2>";
 
 }
+	echo " <center> <h2>Total: " . $total . " </h2> </center>";
 
 ?>
+
+	<center>
+		<a href="./index.php"> Ver Catalogo</a>
+	</center>
 
 	</section>
 </body>
