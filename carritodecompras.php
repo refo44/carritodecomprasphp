@@ -98,7 +98,8 @@ if(isset($_SESSION["carrito"])){
 	<meta charset="utf-8"/>
 	<title>Carrito de Compras</title>
 	<link rel="stylesheet" type="text/css" href="./css/estilos.css">
-	<script type="text/javascript"  href="./js/scripts.js"></script>
+	<script type="text/javascript"  src="./js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript"  src="./js/scripts.js"></script>
 </head>
 <body>
 	<header>
@@ -121,20 +122,32 @@ if (isset($_SESSION['carrito'])) {
 
 
 	for ($i = 0; $i < count($datos); $i++	) {
+
+	
+		if ( $datos[$i]['Cantidad'] != 0 ) {
+			# code...
+		
 		?>
+
 		<div class="productos">
 		<center>
 			<img src="./productos/<?php echo $datos[$i]['Imagen'];?>" alt=""> <br>
 			<span><?php echo $datos[$i]['Nombre'];?></span> <br>
 			<span>Precio: <?php echo $datos[$i]['Precio'];?></span> <br>
-			<span>Cantidad: <input type="text" value="<?php echo $datos[$i]['Cantidad'];?>"> </span> <br>
-			<span>Precio Total: <?php echo $datos[$i]['Precio'] * $datos[$i]['Cantidad'];?></span> <br>
+			<span>Cantidad: 
+				<input type="text" value="<?php echo $datos[$i]['Cantidad'];?>" data-precio="<?php echo $datos[$i]['Precio'];?>"
+				data-id="<?php echo $datos[$i]['Id'];?>"
+				class="cantidad">
+			</span> <br>
+			<span class="subtotal">Subtotal: <?php echo $datos[$i]['Precio'] * $datos[$i]['Cantidad'];?></span> <br>
 
 		</center>
 		</div>
 
 
 		<?php
+
+		} # endif
 
 		$total += $datos[$i]['Precio'] * $datos[$i]['Cantidad'];
 	}
@@ -144,7 +157,7 @@ if (isset($_SESSION['carrito'])) {
 	echo "<h2> No has añadido productos</h2>";
 
 }
-	echo " <center> <h2>Total: " . $total . " </h2> </center>";
+	echo ' <center> <h2 id="total">Total: ' . $total . ' </h2> </center>';
 
 ?>
 
