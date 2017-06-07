@@ -16,7 +16,7 @@
 	<section>
 	<form id="formulario" method="post" action="./login/verificar.php">
 		<?php 
-		if(isset($_GET['error'])){
+		if(isset($_GET['error2'])){
 			echo '<center>Datos No Validos</center>';
 		}elseif(isset($_GET['Error'])){
 			echo '<center>Debe iniciar sesión</center>';

@@ -140,6 +140,7 @@ if (isset($_SESSION['carrito'])) {
 				class="cantidad">
 			</span> <br>
 			<span class="subtotal">Subtotal: <?php echo $datos[$i]['Precio'] * $datos[$i]['Cantidad'];?></span> <br>
+			<a href="#" class="eliminar" data-id="<?php echo $datos[$i]['Id'];?>" >Eliminar </a>
 
 		</center>
 		</div>

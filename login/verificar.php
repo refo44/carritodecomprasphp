@@ -14,12 +14,12 @@ $re = mysql_query("SELECT * FROM usuarios WHERE usuario ='" . $_POST['usuario'] 
 
 	if(isset($arreglo)){
 
-		$SESSION['Usuario'] = $arreglo;
+		$_SESSION['Usuario'] = $arreglo;
 		header("Location: ./../admin.php");
 
 	}else{
 
-		header("Location: ./../login.php?error= datos no validos");
+		header("Location: ./../login.php?error2= datos no validos");
 	}
 
 ?>
