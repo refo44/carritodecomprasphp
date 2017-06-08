@@ -23,11 +23,11 @@ session_start();
 		</a>
 	</header>
 	<section>
-	<nav class="menu2">
-	  <menu>
-	    <li><a href="./">Inicio</a></li>
+		<nav class="menu2">
+		  <menu>
+		    <li><a href="../">Inicio</a></li>
 		<li><a href="../admin.php">Ultimas Compras</a></li>
-	    <li><a href="#" class="selected">Agregar</a></li>
+	    <li><a href="./agregarproducto.php" class="selected">Agregar</a></li>
 	    <li><a href="./login/cerrar.php">Salir</a></li>
 	  </menu>
 	</nav>
