@@ -11,10 +11,10 @@ session_start();
 <html lang="es">
 <head>
 	<meta charset="utf-8"/>
-	<title>Panel de Administración</title>
+	<title>Panel de administración</title>
 	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
-	<script type="text/javascript" src="./js/jquery-1.10.2.js"></script>
-	<script type="text/javascript"  src="./js/scripts.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript"  src="../js/scripts.js"></script>
 </head>
 <body>
 	<header>
@@ -25,14 +25,15 @@ session_start();
 	<section>
 		<nav class="menu2">
 		  <menu>
-		    <li><a href="../">Inicio</a></li>
-		<li><a href="../admin.php">Ultimas Compras</a></li>
+		    <li><a href="../">Catálogo</a></li>
+		<li><a href="../admin.php">Ultimas compras</a></li>
 	    <li><a href="./agregarproducto.php" class="selected">Agregar</a></li>
+	    <li><a href="./modificar.php">Modificar</a></li>
 	    <li><a href="./login/cerrar.php">Salir</a></li>
 	  </menu>
 	</nav>
 
-	<center><h1>Agregar un Nuevo Producto</h1></center>
+	<center><h1>Agregar un nuevo producto</h1></center>
 	<form action="altaproducto.php" method = "post" enctype="multipart/form-data">
 		<fieldset>
 			Nombre<br>

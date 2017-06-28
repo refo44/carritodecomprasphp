@@ -1,2 +1,4 @@
 *.sublime-project
 *.sublime-workspace
+/error_logs
+/error_logs/*

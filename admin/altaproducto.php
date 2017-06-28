@@ -8,7 +8,7 @@
 		$allowedExts = array("gif","jpeg","jpg","png");
 		$temp = explode(".", $_FILES["file"]["name"]);
 		$extension = end($temp);
-		$imagen = "";
+		$imagen = '';
 		$random = rand(1,999999);
 
 		// verificamos que el archivo sea un formato de imagen soportado 

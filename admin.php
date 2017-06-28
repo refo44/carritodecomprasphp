@@ -28,14 +28,15 @@
 	<section>
 	<nav class="menu2">
 	  <menu>
-	    <li><a href="./">Inicio</a></li>
+	    <li><a href="./">Catálogo</a></li>
 	    <li><a href="./admin.php" class="selected">Ultimas Compras</a></li>
 	    <li><a href="./admin/agregarproducto.php" >Agregar</a></li>
+	    <li><a href="./admin/modificar.php">Modificar</a></li>
 	    <li><a href="./login/cerrar.php">Salir</a></li>
 	  </menu>
 	</nav>
 
-	<center><h1>Últimas Compras</h1></center>
+	<center><h1>Últimas compras realizadas</h1></center>
 	<table border="1px" width="100%">
 		<thead>			
 			<tr>
