@@ -1,8 +1,3 @@
 <?php
-
-		$nombre = "Usuario que realiza la compra";
-		$fecha = date("d-m-Y");
-		$hora = date("H-i-s");
-		$asunto = "Compra en carrito";
 		$from = "www.ejemplo.com";
 		$to = "example@email.com";
