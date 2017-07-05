@@ -162,13 +162,40 @@ if (isset($_SESSION['carrito'])) {
 
 	if($total != 0){
 		
-		echo '<center> <a href="./compras/compras.php" class="aceptar">Comprar</a> ';
+		//echo '<center> <a href="./compras/compras.php" class="aceptar">Comprar</a> ';
+	
+		?>
+
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="formulario">
+		<input type="hidden" name="cmd" value="_cart">
+		<input type="hidden" name="upload" value="1">
+		<input type="hidden" name="business" value="refo44@gmail.com">
+		<input type="hidden" name="currency_code" value="USD">
+
+		<?php
+			for ($i=0; $i < count($datos); $i++) { 
+				# code...
+		?>
+
+			<input type="hidden" name="item_name_<?php echo $i+1; ?>" value="<?php echo $datos[$i]['Nombre']; ?>">
+			<input type="hidden" name="amount_<?php echo $i+1; ?>" value="<?php echo $datos[$i]['Precio']; ?>">
+			<input type="text" name="quantity_<?php echo $i+1; ?>" id="quantity_<?php echo $i+1; ?>" value="<?php echo $datos[$i]['Cantidad']; ?>">
+		
+		<?php
+			}
+		?>
+		
+		<center>
+			<input type="submit" value="comprar" style="width:200px">
+		</center>
+	</form>
+	<?php	
 	}
 
 ?>
 
 	<center>
-		<a href="./index.php"> Ver Catalogo</a>
+		<a href="./index.php">Ver Catalogo</a>
 	</center>
 
 	</section>

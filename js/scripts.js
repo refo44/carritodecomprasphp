@@ -10,6 +10,13 @@ var inicio = function () {
 
 				$(this).parentsUntil('.productos').find('.subtotal').text("Subtotal: " + (precio*cantidad));
 
+	
+				//document.getElementById("quantity_"+id).value = cantidad;
+
+				 // $("#quantity_"+id).val(cantidad);
+
+			
+
 				$.post('./js/modificarDatos.php', {
 
 					Id: id,
@@ -43,6 +50,17 @@ var inicio = function () {
 			}
 		}); 
 
+	});
+
+	$("#formulario").submit(function(event) {
+		
+		$.get('./compras/compras.php', function(data) {
+			
+	
+		}).fail(function () {
+			event.preventDefault();
+			console.log("error al enviar el formulario");
+		});
 	});
 }
 
