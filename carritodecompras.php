@@ -136,7 +136,7 @@ if (isset($_SESSION['carrito'])) {
 			<span>Precio: <?php echo $datos[$i]['Precio'];?></span> <br>
 			<span>Cantidad: 
 				<input type="text" value="<?php echo $datos[$i]['Cantidad'];?>" data-precio="<?php echo $datos[$i]['Precio'];?>"
-				data-id="<?php echo $datos[$i]['Id'];?>"
+				data-id="<?php echo $datos[$i]['Id'];?>" data-index="<?php echo $i+1;?>"
 				class="cantidad">
 			</span> <br>
 			<span class="subtotal">Subtotal: <?php echo $datos[$i]['Precio'] * $datos[$i]['Cantidad'];?></span> <br>
@@ -179,7 +179,7 @@ if (isset($_SESSION['carrito'])) {
 
 			<input type="hidden" name="item_name_<?php echo $i+1; ?>" value="<?php echo $datos[$i]['Nombre']; ?>">
 			<input type="hidden" name="amount_<?php echo $i+1; ?>" value="<?php echo $datos[$i]['Precio']; ?>">
-			<input type="text" name="quantity_<?php echo $i+1; ?>" id="quantity_<?php echo $i+1; ?>" value="<?php echo $datos[$i]['Cantidad']; ?>">
+			<input type="hidden" name="quantity_<?php echo $i+1; ?>" id="quantity_<?php echo $i+1; ?>" value="<?php echo $datos[$i]['Cantidad']; ?>">
 		
 		<?php
 			}

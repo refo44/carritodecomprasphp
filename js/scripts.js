@@ -6,14 +6,14 @@ var inicio = function () {
 
 				var id = $(this).attr('data-id');
 				var precio = $(this).attr('data-precio');
+				var index = $(this).attr('data-index');
+
 				var cantidad = $(this).val();
 
 				$(this).parentsUntil('.productos').find('.subtotal').text("Subtotal: " + (precio*cantidad));
 
-	
-				//document.getElementById("quantity_"+id).value = cantidad;
 
-				 // $("#quantity_"+id).val(cantidad);
+				$("#quantity_"+index).val(cantidad);  // change hidden input quantity
 
 			
 
